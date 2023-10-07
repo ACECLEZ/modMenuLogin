@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+  <style>
+  .login-container {
+    width: 300px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f2f2f2;
+    font-family: Arial, sans-serif;
+  }
+
+  h1, p {
+    text-align: center;
+    color: #333;
+  }
+
+  form {
+    margin-top: 20px;
+  }
+
+  label {
+    display: block;
+    margin-bottom: 10px;
+    color: #666;
+  }
+
+  input[type="txt"] {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+
+  button[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+
+  p#error-message {
+    color: red;
+    font-style: italic;
+    margin-top: 10px;
+  }
+  
+      .hidden {
+      display: none;
+      padding: 10px 20px;
+      border: none;
+      background-color: #007bff;
+      color: #fff;
+      font-size: 16px;
+      text-align: center;
+      text-decoration: none;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    
+
+    .hidden:hover {
+      background-color: #0056b3;
+      display: inline-block;
+    }
+</style>
+  
+  <body>
+    <div class="login-container">
+      <h1>zaobaoLibExploit V1.0.0</h1>
+      <p>Get your private key at github @aceclez/zaobaoLibExploit issues</p>
+      <form id="login-form">
+        <input type="txt" id="password-input" autocomplete="off" required>
+
+      </form>
+      <p id="error-message"></p>
+    </div>
+<script>
+
+
+</script>
+
+    <script type="module">
+      // Import Firebase modules
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/9.21.0/firebase-app.js";
+      import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.21.0/firebase-analytics.js";
+      import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.21.0/firebase-auth.js";
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyBM_SzQJhx2P5hx2qxkoFz3M08qbTgzLiI",
+    authDomain: "keysystem-75569.firebaseapp.com",
+    projectId: "keysystem-75569",
+    storageBucket: "keysystem-75569.appspot.com",
+    messagingSenderId: "969885406952",
+    appId: "1:969885406952:web:2426c76817e6a52cef5b5d",
+    measurementId: "G-SD5K4YJEF6"
+  };
+
+      // Initialize Firebase
+      const app = initializeApp(firebaseConfig);
+      const analytics = getAnalytics(app);
+
+      // Get a reference to the Firebase authentication instance
+      const auth = getAuth();
+
+      // Get the login form elements
+      const loginForm = document.querySelector("#login-form");
+      const emailInput = document.querySelector("#email-input");
+      const passwordInput = document.querySelector("#password-input");
+      const errorMessage = document.querySelector("#error-message");
+
+      // Add an event listener to the login form
+      loginForm.addEventListener("submit", (event) => {
+        event.preventDefault(); // Prevent the form from submitting
+
+        //change pw by resetting account or email
+        //EEX6MW9A9HV6VBFXA7ZM
+        const email = "modmenu@gmail.com";
+        const password = passwordInput.value;
+
+        // Call the Firebase signInWithEmailAndPassword method to sign in the user
+        signInWithEmailAndPassword(auth, email, password)
+          .then(() => {
+//expiry check
+var currentDate = new Date();
+var cutoffDate = new Date('2023-10-10');
+if (currentDate > cutoffDate) {
+  errorMessage.textContent = "KEY EXPIRED";
+  return;
+}
+
+            
+            // The user is now signed in
+            console.log("User signed in successfully");
+            //cutoffDate
+            errorMessage.textContent = "KEY EXPIRES ON: " + cutoffDate;
+
+            //session storage
+             //const loginTime = new Date();
+      //const logoutTime = new Date(loginTime.getTime() + 30 * 60000);
+      //localStorage.setItem("loginSession", logoutTime);
+          alert("Data Loaded To Server, Login Success✓");  
+          localStorage.setItem("auth", "ZV6I323NBJ7BAW2WMODBHKSZB2LAW3KOT4Q3EQ7JN65L398EO2");
+          localStorage.setItem("key", "1L5GWQEYL1GF6UOF7DN0Q95MKELXP8WUZTNM65QVIQNJROY6MU");
+           localStorage.setItem("value", "37E1SSPMQ8Z602R1MKNSMQUMX4WDDY42BZ8Y1TBVUROTHNW8OY");
+          })
+          .catch((error) => {
+            // Handle errors that occurred during sign-in
+            //errorMessage.textContent = error.message;
+            errorMessage.textContent = "USER OR DEVICE NOT REGISTERED";
+          });
+      });
+    </script>
+  </body>
+</html>
